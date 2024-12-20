@@ -164,12 +164,7 @@ const ContactForm = ({ returnDestination = `/` }) => {
 
             {!!formState.error && (
               <p className="ContactForm__error">
-                {getTranslatedText(`contactForm.error`)}
-                {` `}
-                <a href="mailto:suukraina@adaptagency.com">
-                  suukraina@adaptagency.com
-                </a>
-                .
+                {getTranslatedText(`contactForm.error`)}.
               </p>
             )}
 
