@@ -26,4 +26,31 @@ const getRichTextModuleData = (node, refs) => {
   return moduleData || null;
 };
 
-export { isUkrainianPage, getLocaleFromPath, getRichTextModuleData };
+// Used stackoverflow as reference
+// Not a 1:1 copy
+// https://stackoverflow.com/a/37033774
+const openDetailsByHash = () => {
+  const hash = location.hash.substring(1);
+  if (hash) {
+    const hashElement = document.getElementById(hash);
+    if (hashElement.tagName === `DETAILS`) {
+      hashElement.open = true;
+      return;
+    }
+
+    const details = Array.from(hashElement.children).find(
+      ({ tagName }) => tagName === `DETAILS`
+    );
+
+    if (details) {
+      details.open = true;
+    }
+  }
+};
+
+export {
+  isUkrainianPage,
+  getLocaleFromPath,
+  getRichTextModuleData,
+  openDetailsByHash,
+};

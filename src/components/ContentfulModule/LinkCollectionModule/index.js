@@ -1,4 +1,11 @@
 import LinkCollectionModule from "./LinkCollectionModule";
-import { LinkCollectionModulePropTypes } from "./LinkCollectionModulePropTypes";
+import {
+  LinkCollectionModulePropTypes,
+  LinkCollectionModuleDefaultProps,
+} from "./LinkCollectionModulePropTypes";
 
-export { LinkCollectionModule, LinkCollectionModulePropTypes };
+export {
+  LinkCollectionModule,
+  LinkCollectionModulePropTypes,
+  LinkCollectionModuleDefaultProps,
+};

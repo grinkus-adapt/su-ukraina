@@ -1,0 +1,135 @@
+.StepsModule {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--s__unit) * 6);
+  padding: var(--s__main-padding) 0;
+
+  details {
+    border: 1px solid #ececec;
+    border-radius: var(--s__main-border-radius);
+    padding: var(--s__main-padding);
+
+    &[open] summary::after {
+      transform: rotate(135deg);
+    }
+  }
+
+  summary {
+    align-items: center;
+    color: var(--c__primary);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    &,
+    h3 {
+      font-size: 1.5rem;
+    }
+
+    h3 {
+      font-weight: var(--fw__small);
+      margin: 0;
+    }
+
+    &::after {
+      border-color: var(--c__primary);
+      border-style: solid;
+      border-width: 0.15em 0.15em 0 0;
+      content: "";
+      display: inline-block;
+      height: 0.45em;
+      left: -0.5em;
+      margin-left: 2rem;
+      position: relative;
+      transform: rotate(45deg) translateY(50%);
+      transform-origin: center;
+      transition: transform 0.2s ease;
+      vertical-align: middle;
+      width: 0.45em;
+    }
+  }
+
+  &__content {
+    border-top: 1px solid #ececec;
+    margin-top: var(--s__main-padding);
+  }
+
+  &__actions {
+    align-items: center;
+    color: var(--c__primary);
+    display: flex;
+    justify-content: space-between;
+    margin: calc(var(--s__unit) * 4) 0;
+    position: relative;
+
+    .copy {
+      font-size: 0.9rem;
+
+      &::after {
+        background-color: var(--c__primary);
+        content: "";
+        display: inline-block;
+        height: 20px;
+        margin-left: 10px;
+        mask-image: url("../../../images/icons/copy.svg");
+        mask-position: center;
+        mask-repeat: no-repeat;
+        mask-size: contain;
+        position: relative;
+        vertical-align: middle;
+        width: 20px;
+      }
+
+      &:hover {
+        color: var(--c__primary);
+        cursor: pointer;
+
+        &::after {
+          background-color: var(--c__primary);
+          content: "";
+          display: inline-block;
+          height: 20px;
+          margin-left: 10px;
+          mask-image: url("../../../images/icons/copy.svg");
+          mask-position: center;
+          mask-repeat: no-repeat;
+          mask-size: contain;
+          position: relative;
+          vertical-align: middle;
+          width: 20px;
+        }
+
+        &:hover {
+          color: var(--c__primary);
+          cursor: pointer;
+
+          &::before {
+            background-color: var(--c__primary);
+          }
+        }
+      }
+    }
+
+    .copy-popup {
+      opacity: 0;
+      position: absolute;
+      right: 30px; /* icon width + margin */
+      text-transform: uppercase;
+      top: 0;
+      transition: transform 0.2s ease-in, opacity 0.5s;
+
+      &--active {
+        opacity: 1;
+        transform: translateY(-2em);
+      }
+    }
+  }
+
+  &__copy-action {
+    margin-left: auto;
+  }
+}

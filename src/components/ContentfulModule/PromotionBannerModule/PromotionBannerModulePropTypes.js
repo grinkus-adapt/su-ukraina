@@ -14,11 +14,13 @@ const PromotionBannerModulePropTypes = {
       PropTypes.shape(EventItemPropTypes),
     ])
   ),
+  fullWidth: PropTypes.bool,
 };
 
 const PromotionBannerModuleDefaultProps = {
   thumbnailUrl: ``,
   content: [],
+  fullWidth: false,
 };
 
 export { PromotionBannerModuleDefaultProps, PromotionBannerModulePropTypes };

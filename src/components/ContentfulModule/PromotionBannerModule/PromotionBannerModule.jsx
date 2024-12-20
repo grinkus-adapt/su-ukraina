@@ -11,6 +11,7 @@ import "./PromotionBannerModule.css";
 import Thumbnail from "./Thumbnail";
 import Organisation from "./ContentComponents/Organisation";
 import EventItem from "./ContentComponents/EventItem";
+import classNames from "classnames";
 import { graphql } from "gatsby";
 
 const PromotionBannerModule = ({
@@ -18,10 +19,13 @@ const PromotionBannerModule = ({
   thumbnail,
   thumbnailUrl,
   content,
+  fullWidth,
 }) => {
   return (
     <Section>
-      <Constraint>
+      <Constraint
+        className={classNames({ "Constraint--full-width": fullWidth })}
+      >
         <div className="PromotionBannerModule">
           <Thumbnail img={thumbnail} url={thumbnailUrl} />
           <div className="PromotionBannerModule__content">
@@ -75,5 +79,6 @@ export const query = graphql`
         ...OrganisationFragment
       }
     }
+    fullWidth
   }
 `;

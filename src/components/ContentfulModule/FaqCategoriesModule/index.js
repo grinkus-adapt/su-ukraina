@@ -1,4 +1,11 @@
 import FaqCategoriesModule from "./FaqCategoriesModule";
-import { FaqCategoriesModulePropTypes } from "./FaqCategoriesModulePropTypes";
+import {
+  FaqCategoriesModulePropTypes,
+  FaqCategoriesModuleDefaultProps,
+} from "./FaqCategoriesModulePropTypes";
 
-export { FaqCategoriesModule, FaqCategoriesModulePropTypes };
+export {
+  FaqCategoriesModule,
+  FaqCategoriesModulePropTypes,
+  FaqCategoriesModuleDefaultProps,
+};

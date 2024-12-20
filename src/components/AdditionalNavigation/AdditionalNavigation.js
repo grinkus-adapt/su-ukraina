@@ -9,7 +9,11 @@ import "./AdditionalNavigation.css";
 
 const AdditionalNavigation = () => {
   const { pathname } = useLocation();
-  const additionalNavigationArray = ADDITIONAL_NAVIGATION[pathname];
+  const pathnameWithoutTrailingSlash = pathname.endsWith(`/`)
+    ? pathname.slice(0, -1)
+    : pathname;
+  const additionalNavigationArray =
+    ADDITIONAL_NAVIGATION[pathnameWithoutTrailingSlash];
 
   return (
     <>

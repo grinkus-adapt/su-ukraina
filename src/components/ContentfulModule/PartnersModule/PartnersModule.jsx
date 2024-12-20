@@ -1,4 +1,5 @@
 import React from "react";
+import classNames from "classnames";
 
 import PartnerList from "./PartnerList";
 import Partner from "./Partner";
@@ -6,35 +7,38 @@ import {
   PartnersModuleDefaultProps,
   PartnersModulePropTypes,
 } from "./PartnersModulePropTypes";
+import Constraint from "../../Constraint";
 
 import "./PartnersModule.css";
 import { graphql } from "gatsby";
 
-const PartnersModule = ({ heading, partnerCollections }) => {
+const PartnersModule = ({ heading, partnerCollections, fullWidth }) => {
   return (
-    <div className="PartnersModule">
-      <h2 className="PartnersModule__title">{heading}</h2>
+    <Constraint className={classNames({ "Constraint--full-width": fullWidth })}>
+      <div className="PartnersModule">
+        <h2 className="PartnersModule__title">{heading}</h2>
 
-      <div className="PartnersModule__category-wrapper">
-        {partnerCollections.map((collection) => {
-          if (!collection?.partners?.at(0)) {
-            return null;
-          }
-          return (
-            <div key={collection.id} className="PartnersModule__category">
-              <h3 className="PartnersModule__category-title">
-                {collection.category}
-              </h3>
-              <PartnerList>
-                {collection.partners.map((partner) => {
-                  return <Partner key={partner.id} {...partner} />;
-                })}
-              </PartnerList>
-            </div>
-          );
-        })}
+        <div className="PartnersModule__category-wrapper">
+          {partnerCollections.map((collection) => {
+            if (!collection?.partners?.at(0)) {
+              return null;
+            }
+            return (
+              <div key={collection.id} className="PartnersModule__category">
+                <h3 className="PartnersModule__category-title">
+                  {collection.category}
+                </h3>
+                <PartnerList>
+                  {collection.partners.map((partner) => {
+                    return <Partner key={partner.id} {...partner} />;
+                  })}
+                </PartnerList>
+              </div>
+            );
+          })}
+        </div>
       </div>
-    </div>
+    </Constraint>
   );
 };
 
@@ -63,5 +67,6 @@ export const query = graphql`
         }
       }
     }
+    fullWidth
   }
 `;

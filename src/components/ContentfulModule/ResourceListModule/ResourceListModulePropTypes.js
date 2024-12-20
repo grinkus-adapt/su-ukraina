@@ -10,7 +10,7 @@ const ResourceItemPropTypes = {
 const ResourceListModulePropTypes = {
   id: PropTypes.string.isRequired,
   heading: PropTypes.string,
-  subheading: PropTypes.shape({
+  subheadingRich: PropTypes.shape({
     raw: PropTypes.string,
   }),
   resources: PropTypes.arrayOf(PropTypes.shape(ResourceItemPropTypes)),
@@ -18,7 +18,7 @@ const ResourceListModulePropTypes = {
 
 const ResourceListModuleDefaultProps = {
   heading: ``,
-  subheading: {
+  subheadingRich: {
     raw: ``,
   },
 };

@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { linkPropTypes } from "../../../../helpers/genericPropTypes";
 
 const FaqItemPropTypes = {
   id: PropTypes.string.isRequired,
@@ -8,6 +9,7 @@ const FaqItemPropTypes = {
     references: PropTypes.array,
   }).isRequired,
   index: PropTypes.number.isRequired,
+  additionalLink: linkPropTypes,
 };
 
 export { FaqItemPropTypes };

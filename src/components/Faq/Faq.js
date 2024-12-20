@@ -14,23 +14,7 @@ import { ResourceListModulePropTypes } from "../ContentfulModule/ResourceListMod
 import { formatRichText } from "../../helpers/formatting";
 
 import "./Faq.css";
-
-// Used stackoverflow as reference
-// Not a 1:1 copy
-// https://stackoverflow.com/a/37033774
-const openTarget = () => {
-  const hash = location.hash.substring(1);
-  if (hash) {
-    const details = Array.from(document.getElementById(hash).children).find(
-      (element) => {
-        return element.tagName === `DETAILS`;
-      }
-    );
-    if (details) {
-      details.open = true;
-    }
-  }
-};
+import { openDetailsByHash } from "../../helpers/handlers";
 
 const Faq = ({
   title,
@@ -42,11 +26,11 @@ const Faq = ({
   crumbs,
 }) => {
   useEffect(() => {
-    window.addEventListener(`hashchange`, openTarget);
-    openTarget();
+    window.addEventListener(`hashchange`, openDetailsByHash);
+    openDetailsByHash();
 
     return () => {
-      window.removeEventListener(`hashchange`, openTarget);
+      window.removeEventListener(`hashchange`, openDetailsByHash);
     };
   }, []);
 

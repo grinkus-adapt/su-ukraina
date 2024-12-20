@@ -1,12 +1,16 @@
 import React from "react";
+import classNames from "classnames";
+
 import { EventsModulePropTypes } from "./EventsModulePropTypes";
 import EventCardList from "./EventCardList";
 import EventCard from "./EventCard";
 import DetailsWrapper from "../../DetailsWrapper";
+import Constraint from "../../Constraint";
+
 import { getTranslatedText } from "../../../utils/getTranslatedText";
 import { graphql } from "gatsby";
 
-const EventsModule = ({ events, locale }) => {
+const EventsModule = ({ events, locale, fullWidth }) => {
   const currentDate = new Date();
   const upcomingEvents = [];
   const previousEvents = [];
@@ -36,38 +40,40 @@ const EventsModule = ({ events, locale }) => {
   starredEvents.forEach(categorizeEvent);
 
   return (
-    <div className="EventsModule">
-      <h2>{getTranslatedText(`events.upcomingEvents`)}</h2>
-      <EventCardList>
-        {upcomingEvents.length ? (
-          upcomingEvents.map((event, i) => {
-            return <EventCard key={i} {...event} locale={locale} />;
-          })
-        ) : (
-          <p>{getTranslatedText(`events.noEvents`)}</p>
-        )}
-      </EventCardList>
+    <Constraint className={classNames({ "Constraint--full-width": fullWidth })}>
+      <div className="EventsModule">
+        <h2>{getTranslatedText(`events.upcomingEvents`)}</h2>
+        <EventCardList>
+          {upcomingEvents.length ? (
+            upcomingEvents.map((event, i) => {
+              return <EventCard key={i} {...event} locale={locale} />;
+            })
+          ) : (
+            <p>{getTranslatedText(`events.noEvents`)}</p>
+          )}
+        </EventCardList>
 
-      {!!previousEvents.length && (
-        <DetailsWrapper
-          tag="h2"
-          summary={getTranslatedText(`events.previousEvents`)}
-        >
-          <EventCardList>
-            {previousEvents.map((event, i) => {
-              return (
-                <EventCard
-                  key={i}
-                  className="EventCard--previous"
-                  {...event}
-                  locale={locale}
-                />
-              );
-            })}
-          </EventCardList>
-        </DetailsWrapper>
-      )}
-    </div>
+        {!!previousEvents.length && (
+          <DetailsWrapper
+            tag="h2"
+            summary={getTranslatedText(`events.previousEvents`)}
+          >
+            <EventCardList>
+              {previousEvents.map((event, i) => {
+                return (
+                  <EventCard
+                    key={i}
+                    className="EventCard--previous"
+                    {...event}
+                    locale={locale}
+                  />
+                );
+              })}
+            </EventCardList>
+          </DetailsWrapper>
+        )}
+      </div>
+    </Constraint>
   );
 };
 
@@ -80,5 +86,6 @@ export const query = graphql`
     events {
       ...EventItemFragment
     }
+    fullWidth
   }
 `;

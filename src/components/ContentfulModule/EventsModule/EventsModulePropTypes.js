@@ -20,6 +20,7 @@ const EventsModulePropTypes = {
     type: PropTypes.string.isRequired,
   }).isRequired,
   events: PropTypes.arrayOf(PropTypes.shape(EventItemPropTypes)),
+  fullWidth: PropTypes.bool,
 };
 
 const EventsModuleDefaultProps = {
@@ -36,6 +37,7 @@ const EventsModuleDefaultProps = {
       eventUrl: ``,
     },
   ],
+  fullWidth: false,
 };
 
 export { EventsModuleDefaultProps, EventsModulePropTypes, EventItemPropTypes };

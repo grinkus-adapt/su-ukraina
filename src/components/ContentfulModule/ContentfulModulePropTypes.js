@@ -12,6 +12,7 @@ import { HelpSearchPropTypes } from "../HelpSearch";
 import { PartnersModulePropTypes } from "./PartnersModule";
 import { FaqCategoriesModulePropTypes } from "./FaqCategoriesModule";
 import { PromotionBannerModulePropTypes } from "./PromotionBannerModule";
+import { StepsModulePropTypes } from "./StepsModule";
 
 const ContentfulModulePropTypes = PropTypes.oneOfType([
   PropTypes.shape(EventsModulePropTypes),
@@ -24,6 +25,7 @@ const ContentfulModulePropTypes = PropTypes.oneOfType([
   PropTypes.shape(PartnersModulePropTypes),
   PropTypes.shape(FaqCategoriesModulePropTypes),
   PropTypes.shape(PromotionBannerModulePropTypes),
+  PropTypes.shape(StepsModulePropTypes),
 ]);
 
 export default ContentfulModulePropTypes;

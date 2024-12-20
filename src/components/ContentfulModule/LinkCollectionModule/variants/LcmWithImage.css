@@ -1,0 +1,116 @@
+.LcmWithImage {
+  background-color: #f6f6f6;
+
+  &__text {
+    margin-bottom: calc(var(--s__unit) * 10);
+    padding-top: calc(var(--s__unit) * 10);
+  }
+
+  &__title {
+    font-size: var(--fs__h4);
+    margin: 0;
+    margin-bottom: calc(var(--s__unit) * 10);
+  }
+
+  &__button-list {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.25rem;
+    list-style: none;
+    padding: 0;
+
+    li {
+      padding: var(--s__main-padding) 0;
+
+      &:first-of-type {
+        padding-top: 0;
+      }
+
+      + li {
+        border-top: 1px solid #ececec;
+      }
+    }
+  }
+
+  &__image {
+    .gatsby-image-wrapper {
+      height: 100%;
+
+      /* Fuck this hack, but ok. */
+      margin: 0 -16px;
+      width: 100%;
+      width: calc(100% + 32px);
+    }
+  }
+
+  .Button {
+    border: none;
+    color: var(--c__main-color);
+    justify-content: space-between;
+    padding: 0;
+    text-transform: none;
+
+    .Icon {
+      --icon-size: 32px;
+
+      margin-left: var(--s__main-padding);
+      min-width: var(--icon-size);
+    }
+
+    &:hover {
+      text-decoration: underline;
+
+      &::after {
+        transform: none;
+      }
+    }
+  }
+
+  @media (min-width: 40rem) {
+    &__section {
+      display: flex;
+
+      > * {
+        flex: 1;
+      }
+    }
+
+    &__text {
+      margin-bottom: 0;
+      padding-right: var(--s__main-padding);
+      padding-top: calc(var(--s__alt-padding) * 2);
+    }
+
+    &__title {
+      font-size: var(--fs__h3);
+      margin-bottom: calc(var(--s__alt-padding) * 2);
+    }
+
+    &__button-list {
+      font-size: 1.5rem;
+
+      li {
+        padding: var(--s__alt-padding) 0;
+
+        &:first-of-type {
+          padding-top: 0;
+        }
+
+        + li {
+          border: none;
+        }
+      }
+    }
+
+    &__image {
+      .gatsby-image-wrapper {
+        margin: unset;
+        width: 100%;
+      }
+    }
+
+    .Button {
+      display: inline-flex;
+    }
+  }
+}

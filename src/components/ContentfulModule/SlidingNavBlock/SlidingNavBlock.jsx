@@ -4,6 +4,7 @@ import "./SlidingNavBlock.css";
 import Icon from "../../Icon";
 import { ChipModule } from "../ChipModule";
 import { SlidingNavBlockPropTypes } from "./SlidingNavBlockPropTypes";
+import Constraint from "../../Constraint";
 import { graphql } from "gatsby";
 
 const SlidingNavBlock = ({ id = ``, children, title, icon, data }) => {
@@ -17,20 +18,22 @@ const SlidingNavBlock = ({ id = ``, children, title, icon, data }) => {
   };
 
   return (
-    <div id={id} className="SlidingNavBlock">
-      <div className="SlidingNavBlock__title-wrapper">
-        {title && (
-          <h2 className="SlidingNavBlock__title">
-            {!!icon && <Icon type={icon} />}
-            {title}
-          </h2>
+    <Constraint className="Constraint--sliding-nav">
+      <div id={id} className="SlidingNavBlock">
+        <div className="SlidingNavBlock__title-wrapper">
+          {title && (
+            <h2 className="SlidingNavBlock__title">
+              {!!icon && <Icon type={icon} />}
+              {title}
+            </h2>
+          )}
+        </div>
+        {children && <div className="SlidingNavBlock__content">{children}</div>}
+        {!children && data && (
+          <div className="SlidingNavBlock__content">{getModule(data)}</div>
         )}
       </div>
-      {children && <div className="SlidingNavBlock__content">{children}</div>}
-      {!children && data && (
-        <div className="SlidingNavBlock__content">{getModule(data)}</div>
-      )}
-    </div>
+    </Constraint>
   );
 };
 

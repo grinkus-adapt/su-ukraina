@@ -40,18 +40,18 @@ const navigationPropTypes = PropTypes.shape({
   node_locale: localePropType.isRequired,
 });
 
+const linkPropTypes = PropTypes.shape({
+  id: PropTypes.string,
+  label: PropTypes.string,
+  url: PropTypes.string,
+  sublabel: PropTypes.string,
+});
+
 const promoLinePropTypes = PropTypes.shape({
   heading: PropTypes.string.isRequired,
   headingLink: PropTypes.string,
   subheading: PropTypes.string,
-  linkButton: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string,
-      label: PropTypes.string,
-      url: PropTypes.string,
-      sublabel: PropTypes.string,
-    })
-  ),
+  linkButton: PropTypes.arrayOf(linkPropTypes),
 });
 
 const nodeSlugsPropTypes = PropTypes.shape({
@@ -70,6 +70,7 @@ export {
   localePropType,
   gatsbyImagePropType,
   navigationPropTypes,
+  linkPropTypes,
   promoLinePropTypes,
   nodeSlugsPropTypes,
   nodeSlugsDefaultProps,

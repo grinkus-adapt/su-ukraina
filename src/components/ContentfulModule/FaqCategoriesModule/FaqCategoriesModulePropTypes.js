@@ -6,6 +6,14 @@ const FaqCategoriesModulePropTypes = {
   seeAllLink: PropTypes.string,
   categories: FaqCategoriesPropType.isRequired,
   pathname: PropTypes.string,
+  fullWidth: PropTypes.bool,
 };
 
-export { FaqCategoriesModulePropTypes };
+const FaqCategoriesModuleDefaultProps = {
+  heading: ``,
+  seeAllLink: ``,
+  pathname: ``,
+  fullWidth: false,
+};
+
+export { FaqCategoriesModulePropTypes, FaqCategoriesModuleDefaultProps };

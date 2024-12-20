@@ -15,6 +15,11 @@ import {
   promoLinePropTypes,
 } from "../helpers/genericPropTypes";
 import { FaqCategoriesPropType } from "../components/Faq/FaqPropTypes";
+import {
+  LinkCollectionModule,
+  LinkCollectionModulePropTypes,
+  LinkCollectionModuleDefaultProps,
+} from "../components/ContentfulModule/LinkCollectionModule";
 import { graphql } from "gatsby";
 
 const FaqIndexPage = ({ data, path, pageContext }) => {
@@ -26,6 +31,7 @@ const FaqIndexPage = ({ data, path, pageContext }) => {
   const {
     contentfulNavigation: navigation,
     contentfulPromoLineModule: promoLine,
+    contentfulLinkCollectionModule: personalizedGuidesLinks,
     contentfulFaqPage: {
       metaTitle,
       metaDescription,
@@ -58,6 +64,13 @@ const FaqIndexPage = ({ data, path, pageContext }) => {
           <FaqNav rootPath={rootPath} categories={categories} pathname={path} />
         </Constraint>
       )}
+
+      {personalizedGuidesLinks && (
+        <LinkCollectionModule
+          {...personalizedGuidesLinks}
+          className="LcmLightBlocks--with-padding"
+        />
+      )}
     </Layout>
   );
 };
@@ -89,6 +102,9 @@ FaqIndexPage.propTypes = {
       }),
       categories: FaqCategoriesPropType,
     }),
+    contentfulLinkCollectionModule: PropTypes.shape(
+      LinkCollectionModulePropTypes
+    ),
   }),
 };
 
@@ -99,6 +115,7 @@ FaqIndexPage.defaultProps = {
   },
   organisations: [],
   navData: [],
+  contentfulLinkCollectionModule: LinkCollectionModuleDefaultProps,
 };
 
 export default FaqIndexPage;
@@ -125,6 +142,13 @@ export const faqIndexPageQuery = graphql`
       node_locale: { eq: $locale }
     ) {
       ...PromoLineFragment
+    }
+
+    contentfulLinkCollectionModule(
+      contentful_id: { eq: "1JYPNg9dcfazxccUEpijxk" }
+    ) {
+      id
+      ...LinkCollectionModuleFragment
     }
 
     # Faq Page (all categories for faq nav)

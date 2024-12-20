@@ -1,0 +1,67 @@
+.LcmLightBlocks {
+  margin: var(--s__main-padding) 0;
+  overflow: hidden;
+  width: 100%;
+
+  /* @todo: this is a temporary solution for quickly adding padding */
+  &--with-padding {
+    padding: var(--s__alt-padding) 0;
+  }
+
+  &__heading {
+    font-size: 1.8rem;
+    margin: 0;
+  }
+
+  &__button-list {
+    display: flex;
+    flex-direction: column;
+    font-size: var(--fs__h5);
+    gap: calc(var(--s__unit) * 6);
+    list-style: none;
+    padding: 0;
+
+    li {
+      width: 100%;
+    }
+
+    .Button {
+      border-radius: var(--s__alt-border-radius);
+      box-sizing: border-box;
+      height: 100%;
+      justify-content: center;
+      padding: calc(var(--s__unit) * 6);
+      text-align: center;
+      text-transform: none;
+      width: 100%;
+
+      &::after {
+        display: none;
+      }
+    }
+  }
+
+  @media (min-width: 60rem) {
+    &__heading {
+      font-size: var(--fs__h3);
+    }
+
+    &__button-list {
+      flex-direction: row;
+      font-size: 1.5rem;
+      justify-content: space-between;
+
+      > * {
+        flex: 1;
+      }
+    }
+
+    .Button {
+      box-shadow: none;
+
+      .Icon {
+        display: none;
+      }
+    }
+  }
+}

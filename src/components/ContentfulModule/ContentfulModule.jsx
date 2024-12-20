@@ -12,6 +12,7 @@ import { HelpSearch } from "../HelpSearch";
 import { PartnersModule } from "./PartnersModule";
 import { FaqCategoriesModule } from "./FaqCategoriesModule";
 import { PromotionBannerModule } from "./PromotionBannerModule";
+import { StepsModule } from "./StepsModule";
 
 const ContentfulModule = ({ module, pathname }) => {
   const type = module?.internal?.type || ``;
@@ -58,6 +59,10 @@ const ContentfulModule = ({ module, pathname }) => {
 
   if (type === `ContentfulPromotionBannerModule`) {
     return <PromotionBannerModule {...module} />;
+  }
+
+  if (type === `ContentfulStepsModule`) {
+    return <StepsModule {...module} />;
   }
 
   return null;

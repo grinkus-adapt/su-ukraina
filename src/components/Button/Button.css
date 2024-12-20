@@ -90,6 +90,16 @@
     }
   }
 
+  &--tertiary {
+    background: #eaf1ff;
+
+    &:hover {
+      &::after {
+        display: none;
+      }
+    }
+  }
+
   .Icon {
     --icon-size: 20px;
 

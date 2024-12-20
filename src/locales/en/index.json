@@ -22,7 +22,8 @@
     "email": "E-mail",
     "message": "Message",
     "source": "Source",
-    "links": "Links"
+    "links": "Links",
+    "step": "Step"
   },
   "organisation": {
     "about": "About",

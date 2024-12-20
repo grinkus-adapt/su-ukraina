@@ -15,10 +15,12 @@ const PartnersModulePropTypes = {
       partners: PropTypes.arrayOf(PropTypes.shape(PartnerPropTypes)),
     })
   ),
+  fullWidth: PropTypes.bool,
 };
 
 const PartnersModuleDefaultProps = {
   partnerCollections: [],
+  fullWidth: false,
 };
 
 export {

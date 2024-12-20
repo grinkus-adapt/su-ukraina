@@ -23,5 +23,6 @@ export const query = graphql`
     chips {
       ...ChipFragment
     }
+    fullWidth
   }
 `;

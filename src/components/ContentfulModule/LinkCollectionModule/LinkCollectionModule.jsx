@@ -1,60 +1,31 @@
 import React from "react";
-
-import { LinkCollectionModulePropTypes } from "./LinkCollectionModulePropTypes";
-import Button from "../../Button";
-import Constraint from "../../Constraint";
-import LinkCollectionWithImage from "../../LinkCollectionWithImage";
-import Section from "../../Section";
-
-import "./LinkCollectionModule.css";
 import { graphql } from "gatsby";
 
-const LinkCollectionModule = ({ links, heading, image }) => {
-  if (image) {
-    return (
-      <Section className="BeVigilantSection">
-        <Constraint>
-          <LinkCollectionWithImage image={image} title={heading}>
-            {links.map(({ id, url, label }) => {
-              if (!label || !url) {
-                return null;
-              }
-              return (
-                <li key={id}>
-                  <Button endIcon={`arrow-blue`} to={url} color={`transparent`}>
-                    {label}
-                  </Button>
-                </li>
-              );
-            })}
-          </LinkCollectionWithImage>
-        </Constraint>
-      </Section>
-    );
+import {
+  LinkCollectionModuleDefaultProps,
+  LinkCollectionModulePropTypes,
+} from "./LinkCollectionModulePropTypes";
+import LcmWithImage from "./variants/LcmWithImage";
+import LcmDefault from "./variants/LcmDefault";
+import LcmLightBlocks from "./variants/LcmLightBlocks";
+
+const LinkCollectionModule = (props) => {
+  const { variant } = props;
+
+  if (variant === `with-image`) {
+    return <LcmWithImage {...props} />;
   }
-  return (
-    <section className="LinkCollectionModule">
-      {!!heading && <h2 className="LinkCollectionModule__title">{heading}</h2>}
-      <ul className="LinkCollectionModule__button-list">
-        {links.map((link) => {
-          return (
-            <li key={link.id}>
-              <Button endIcon={`arrow-white`} to={link.url} color={`primary`}>
-                {link.label}
-              </Button>
-            </li>
-          );
-        })}
-      </ul>
-    </section>
-  );
+
+  if (variant === `light-blocks`) {
+    return <LcmLightBlocks {...props} />;
+  }
+
+  return <LcmDefault {...props} />;
 };
 
 LinkCollectionModule.propTypes = LinkCollectionModulePropTypes;
 
-LinkCollectionModule.defaultProps = {
-  title: ``,
-};
+LinkCollectionModule.defaultProps = LinkCollectionModuleDefaultProps;
 
 export default LinkCollectionModule;
 
@@ -69,6 +40,8 @@ export const query = graphql`
         placeholder: BLURRED
       )
     }
+    fullWidth
+    variant
     links {
       ...LinkFragment
     }

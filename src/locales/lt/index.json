@@ -22,7 +22,8 @@
     "email": "El. paštas",
     "message": "Žinutė",
     "source": "Šaltinis",
-    "links": "Nuorodos"
+    "links": "Nuorodos",
+    "step": "Žingsnis"
   },
   "organisation": {
     "about": "Apie",
